@@ -22,24 +22,44 @@ function navFunctionality() {
   var welcomePageHeight = pageSections[0].clientHeight;
   var navButtonHeight = navButtons[0].clientHeight;
   var menuYOffset = navMenuTopMargin + window.pageYOffset;
+  var rightMargin = 70 + 'px';
+  var leftMargin = 80 + 'px';
 
-  for (var i = 0; i < navButtons.length; i++) {
-    var buttonHeight = navMenuTopMargin + (i) * navButtonHeight + window.pageYOffset + ((i + 1) * navMenuTopMargin);
+  resetMargins();
+  navLogic();
 
-    if( menuYOffset > welcomePageHeight) {
-      for(var i = 0; i < navButtons.length; i++) {
-        navButtonContainers[i].style.marginLeft = 0 + "px";
-        navButtonContainers[i].style.marginRight = 0 + "px";
+  window.addEventListener('load', navLogic);
+  // window.addEventListener('resize', navLogic);
+  window.addEventListener('resize', resetMargins);
+
+  function resetMargins() {
+    var mq = window.matchMedia( "(max-width: 930px)" );
+    if (mq.matches) {
+      rightMargin = 0 + 'px';
+      leftMargin = 0 + 'px';
+      navLogic();
+    }
+  }
+
+  function navLogic() {
+    for (var i = 0; i < navButtons.length; i++) {
+      var buttonHeight = navMenuTopMargin + (i) * navButtonHeight + window.pageYOffset + ((i + 1) * navMenuTopMargin);
+
+      if( menuYOffset > welcomePageHeight) {
+        for(var i = 0; i < navButtons.length; i++) {
+          navButtonContainers[i].style.marginLeft = 0 + "px";
+          navButtonContainers[i].style.marginRight = 0 + "px";
+          navButtonContainers[i].classList.add('nav-menu-faded');
+        }
+      } else if(buttonHeight >= welcomePageHeight) {
         navButtonContainers[i].classList.add('nav-menu-faded');
+        navButtonContainers[i].style.marginRight = 0 + "px";
+        navButtonContainers[i].style.marginLeft = rightMargin;
+      } else if (buttonHeight < welcomePageHeight) {
+        navButtonContainers[i].classList.remove('nav-menu-faded');
+        navButtonContainers[i].style.marginRight = leftMargin;
+        navButtonContainers[i].style.marginLeft = 0 + "px";
       }
-    } else if(buttonHeight >= welcomePageHeight) {
-      navButtonContainers[i].classList.add('nav-menu-faded');
-      navButtonContainers[i].style.marginRight = 0 + "px";
-      navButtonContainers[i].style.marginLeft = 70 + "px";
-    } else if (buttonHeight < welcomePageHeight) {
-      navButtonContainers[i].classList.remove('nav-menu-faded');
-      navButtonContainers[i].style.marginRight = 80 + "px";
-      navButtonContainers[i].style.marginLeft = 0 + "px";
     }
   }
 }
@@ -157,7 +177,13 @@ window.addEventListener('load', function() {
   centerText('.story', '.story-container')
 });
 window.addEventListener('resize', styleCenter);
+window.addEventListener('resize', function() {
+  setTimeout(function() {
+    styleCenter()
+  }, 801);
+});
 // window.onload = styleCenter();
 window.addEventListener('load', styleCenter);
 window.addEventListener('load', navFunctionality);
+window.addEventListener('resize', navFunctionality);
 window.addEventListener('scroll', navFunctionality);

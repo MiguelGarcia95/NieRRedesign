@@ -17,13 +17,17 @@
 body {padding: 0; margin: 0; font-family: 'Inconsolata';}
 a {text-decoration: none;}
 
+.nav-menu {position: fixed; background-color: transparent; right: 0px; margin-top: 20px; z-index: 99; float: right; margin-right: 10px; transition: 0.8s;}
+.nav-menu .button-container {width: 80px; text-align: center; position: relative;  margin: 10px 0px;}
+.nav-menu .button-container .button {font-size: 0.8em;}
+.nav-menu .button {padding: 5px;}
 
 .page-section {width: 100%; min-height: 600px; background-position: center; background-size: cover; overflow: auto;}
 .section-cover {width: 100%; height: 100%; background-color: rgba(205, 200, 176,0.2); box-sizing: border-box; padding: 0 @pagePadding; box-sizing: border-box;}
 
 #welcome {background-image: url("@{backgrounds}/top-background-new.jpg"); height: 100vh; }
 .left-page {width: 600px; float: left; text-align: center;}
-.welcome-logo {padding: 50px; padding-top: 100px; width: 100%; box-sizing: border-box;}
+.welcome-logo {padding: 50px; padding-top: 100px; width: 100%; box-sizing: border-box; transition: @transitionTime;}
 .button-container {border-top: 3px solid @bodyColor; border-bottom: 3px solid @bodyColor;
   width: 150px; margin-left: 50px; padding: 3px 0; margin-bottom: 30px; transition: @transitionTime;}
 .website-button {width: 200px; }
@@ -31,14 +35,9 @@ a {text-decoration: none;}
 .button {clear: both; display: block; background-color: @bodyColor; color: @buttonFontColor;  padding: 5px 20px; width: 100%;
   box-sizing: border-box; cursor: pointer;}
 
-.nav-menu {position: fixed; background-color: transparent; right: 0px; margin-top: 20px; z-index: 99; float: right; margin-right: 10px; transition: 0.8s;}
-.nav-menu .button-container {width: 80px; text-align: center; position: relative;  margin: 10px 0px;}
-.nav-menu .button-container .button {font-size: 0.8em;}
-.nav-menu .button {padding: 5px;}
-
 #trailers {background-color: @buttonFontColor; height: auto; overflow: auto;}
 .section-title {font-family: 'Open sans'; font-weight: 300; text-transform: uppercase; margin-top: 0;
-padding-top: 50px; font-size: 4em; letter-spacing: 4px; text-shadow: 10px 10px 5px #7c7b76; margin-bottom: 40px;}
+padding-top: 50px; font-size: 4em; letter-spacing: 4px; text-shadow: 10px 10px 5px #7c7b76; margin-bottom: 40px; transition: @transitionTime;}
 .trailers {width: 100%; margin-bottom: 80px; overflow: auto;}
 .trailer {width: 30%; margin: auto 2.5%; float: left; border-top: 3px solid @bodyColor; padding-top: 3px; background-color: @videoPanelColor; margin-top: 40px; transition: @transitionTime;}
 .trailer:hover {transform: translateY(-4px);}
@@ -61,7 +60,7 @@ padding-top: 50px; font-size: 4em; letter-spacing: 4px; text-shadow: 10px 10px 5
 #characters .section-cover {padding: 0; background-color: transparent;}
 #characters .section-title {padding-left: @pagePadding;}
 .slider-container{width: 80%; height: 600px; background-color: black; overflow: hidden;  margin: auto;
-white-space: nowrap; margin-bottom: 70px; margin-left: 10%; z-index: 0; transition: 0.8s; margin-top: 80px} // removed  position: absolute;
+white-space: nowrap; margin-bottom: 70px; margin-left: 10%; z-index: 0; transition: 0.8s; margin-top: 80px}
 .slider {width: 100%; height: 100%; position: relative; transition: 1s; left: 0;}
 .slide {width: 100%; height: 100%; box-sizing: border-box; display: inline-block; transition: 0.8s; background-position: center; background-size: cover;}
 
@@ -98,12 +97,6 @@ white-space: nowrap; margin-bottom: 70px; margin-left: 10%; z-index: 0; transiti
 
 #screenshots {overflow: auto; background-color: @buttonFontColor;}
 
-#buy {overflow: auto; background-color: @buttonFontColor;}
-.buy-container {width: 100%;}
-.buy-img {width: 50%; float: left;}
-.buy-img img {width: 50%;}
-.buy-now {width: 50%; float: right;}
-
 .footer {width: 100%; overflow: auto; background-color: @bodyColor; position: relative;}
 .icons {width: 200px; margin: auto; margin-top: 50px;}
 .icon {width: 50%; float: left;}
@@ -119,3 +112,103 @@ white-space: nowrap; margin-bottom: 70px; margin-left: 10%; z-index: 0; transiti
 .disclaimer {color: @buttonFontColor; text-align: center; font-size: 0.9em;  padding: 0 @pagePadding; margin-top: 30px;}
 .disclaimer p {margin: 5px auto;}
 .disclaimer a {color: white;}
+
+@media screen and (max-width: 930px) {
+  // .nav-menu {display: none;}
+  // .nav-menu {position: fixed; background-color: transparent; right: 0px; margin-top: 20px; z-index: 99; float: right; margin-right: 10px; transition: 0.8s;}
+  .nav-menu {float: left; left: 0; transition: 1s; margin-left: @pagePadding;}
+  .nav-menu .button-container {float: left; margin: 2px; margin-right: 20px;}
+  .nav-menu-faded {box-shadow: none;}
+  // .nav-menu .button-container {width: 80px; text-align: center; position: relative;  margin: 10px 0px;}
+  // .nav-menu .button-container .button {font-size: 0.8em;}
+  // .nav-menu .button {padding: 5px;}
+
+  // .trailers {width: 100%; margin-bottom: 80px; overflow: auto;}
+  .trailer {width: 45%; margin: auto 2.5%; float: left; margin-top: 20px;}
+  .trailer:hover {transform: translateY(-2px);}
+  .trailer:nth-of-type(3n+1) {margin-left: 2.5%; float: left;}
+  .trailer:nth-of-type(3n+3) {margin-right: 2.5%; float: left;}
+  .trailer:nth-of-type(11) {margin-right: 2.5%; float: right;}
+
+  .slider-container{width: 100%; height: 600px; margin-bottom: 70px; margin-left: 0; margin-top: 80px;}
+  .arrow-left {margin-left: 10px;}
+  .arrow-right {margin-right: 10px;}
+
+  .story {width: 100%; padding-left: 20px; padding-right: 20px;}
+  .story-img {width: 100%; float: right;}
+  .story-img img {width: 50%; float: right; box-sizing: border-box; padding-top: 20px;}
+}
+
+@media screen and (max-width: 730px) {
+  .left-page {width: 400px;}
+  .welcome-logo {padding-left: 0px;}
+  #welcome .button-container {margin-left: 0px;}
+  .button-container:hover {transform: translateY(-2px); }
+}
+
+@media screen and (max-width: 650px) {
+  #welcome .button-container {width: 150px; font-size: 0.9em;}
+  #welcome .button {font-size: 0.9em;}
+
+  .trailer {width: 95%; margin: auto 2.5%; float: left; margin-top: 20px;}
+  .trailer:hover {transform: translateY(-2px);}
+  .trailer:nth-of-type(3n+1) {margin-left: 2.5%; float: left;}
+  .trailer:nth-of-type(3n+3) {margin-right: 2.5%; float: left;}
+  // .trailer:nth-of-type(11) {margin-right: 2.5%; float: right;}
+}
+
+@media screen and (max-width: 650px) {
+  .section-title {font-size: 3.5em;}
+}
+
+@media screen and (max-width: 600px) {
+  @pagePadding = 40px;
+  .nav-menu {margin-left: 40px;}
+  .section-cover {padding: 0 40px;}
+  #characters .section-title {padding-left: 40px;}
+  .disclaimer {padding: 0 40px; }
+
+  .section-title {font-size: 3em;}
+}
+
+@media screen and (max-width: 530px) {
+  .nav-menu {display: none;}
+  .left-page {width: 100%; text-align: center;}
+  #welcome .button-container {margin: auto; margin-top: 10px;}
+  .section-title {font-size: 2.5em;}
+  .welcome-logo {padding: 0; padding-top: 100px; padding-bottom: 50px;}
+
+  .slider-container {height: 550px;}
+  .arrow { margin-top: 275px; }
+
+  .slide-img {width: 100%; text-align: center;}
+  .slide-description {width: 0%; display: none;}
+
+}
+
+@media screen and (max-width: 500px) {
+  .play-container img {width: 34px; height: 24px; margin: 0px; padding: 0;}
+}
+
+@media screen and (max-width: 450px) {
+  .section-title {font-size: 2em;}
+  .slider-container {height: 500px;}
+  .arrow { margin-top: 250px; }
+
+
+}
+
+@media screen and (max-width: 400px) {
+  .section-title {font-size: 1.5em;}
+  .logos {width: 100%; margin: auto; margin-top: 50px; text-align: center;}
+  .logo {width: 100%; margin: auto;}
+  .logo:first-of-type img {float: none;}
+  .logo:last-of-type img {float: none;}
+
+}
+
+@media screen and (max-width: 350px) {
+  .slider-container {height: 450px;}
+  .arrow { margin-top: 225px; }
+
+}
