@@ -38,12 +38,12 @@ a {text-decoration: none;}
 #trailers {background-color: @buttonFontColor; height: auto; overflow: auto;}
 .section-title {font-family: 'Open sans'; font-weight: 300; text-transform: uppercase; margin-top: 0;
 padding-top: 50px; font-size: 4em; letter-spacing: 4px; text-shadow: 10px 10px 5px #7c7b76; margin-bottom: 40px; transition: @transitionTime;}
-.trailers {width: 100%; margin-bottom: 80px; overflow: auto;}
+.trailers {width: 100%; margin-bottom: 80px; overflow: hidden;}
 .trailer {width: 30%; margin: auto 2.5%; float: left; border-top: 3px solid @bodyColor; padding-top: 3px; background-color: @videoPanelColor; margin-top: 40px; transition: @transitionTime;}
 .trailer:hover {transform: translateY(-4px);}
 
-.trailer:nth-of-type(3n+1) {margin-left: 0;}
-.trailer:nth-of-type(3n+3) {margin-right: 0; float: right;}
+.trailer:nth-of-type(3n+1) {margin-left: 0%;}
+.trailer:nth-of-type(3n+3) {margin-right: 0%; float: right;}
 
 .trailer-title {text-align: center; width: 100%; height: 25px; background-color: @bodyColor; box-sizing: border-box; padding-left: 20px; padding-right: 20px;}
 .trailer-title h3 {line-height: 25px; margin: auto; color: @buttonFontColor; text-transform: uppercase;font-weight: 400; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
